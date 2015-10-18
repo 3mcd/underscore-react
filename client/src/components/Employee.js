@@ -17,7 +17,7 @@ class Employee extends React.Component {
   render() {
     var data = (
       <dl>
-      {/* Map each property to a dt and dd */}
+      {/* Map each key name/property to a dt and dd */}
       {_.map(
         /* Get an array of property names on the objects in our collection */
         _.keys(

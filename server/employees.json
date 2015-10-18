@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "first": "Eric",
-    "last": "McDaniel",
-    "salary": 80000,
+    "first": "Martha",
+    "last": "Stewart",
+    "salary": 50000,
     "title": "Developer"
   },
   {
@@ -17,7 +17,7 @@
     "id": 3,
     "first": "Jane",
     "last": "Doe",
-    "salary": 187000,
+    "salary": 287000,
     "title": "CFO"
   },
   {
@@ -39,6 +39,6 @@
     "first": "Bill",
     "last": "Clinton",
     "salary": 12345,
-    "gender": "Junior Developer"
+    "title": "Junior Developer"
   }
 ]

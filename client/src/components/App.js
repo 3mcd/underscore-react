@@ -34,17 +34,17 @@ var App = React.createClass({
 
     onSearch(e) {
       this.state.search = e.target.value;
-      this.forceUpdate.call(this, null);
+      this._boundForceUpdate();
     },
 
     onSort(e) {
       this.state.sort = e.target.value;
-      this.forceUpdate.call(this, null);
+      this._boundForceUpdate();
     },
 
     onOrder(e) {
       this.state.order = e.target.value;
-      this.forceUpdate.call(this, null);
+      this._boundForceUpdate();
     },
 
     render() {
