@@ -4,48 +4,48 @@ import Employee from './Employee';
 import DataBar from './DataBar';
 import _ from 'underscore';
 
-var App = React.createClass({
+class App extends React.Component {
 
-    //mixins: [BackboneMixin],
+    constructor(props) {
+      super(props);
+      this.state = {
+        search: '',
+        sort: 'id',
+        order: 'asc'
+      };
+    }
+
+    get styles() {
+      return {
+        display: 'flex',
+        flexWrap: 'wrap',
+        paddingBottom: '3em'
+      }
+    }
 
     componentDidMount() {
       this._boundForceUpdate = this.forceUpdate.bind(this, null);
       this.props.collection.on('all', this._boundForceUpdate);
-    },
+    }
 
     componentWillUnmount() {
       this.props.collection.off('all', this._boundForceUpdate);
-    },
-
-    getStyles() {
-      return {
-        display: 'flex',
-        flexWrap: 'wrap'
-      };
-    },
-
-    getInitialState() {
-      return {
-        search: '',
-        sort: 'id',
-        order: 'Asc'
-      };
-    },
+    }
 
     onSearch(e) {
-      this.state.search = e.target.value;
+      this.setState({ search: e.target.value });
       this._boundForceUpdate();
-    },
+    }
 
     onSort(e) {
-      this.state.sort = e.target.value;
+      this.setState({ sort: e.target.value });
       this._boundForceUpdate();
-    },
+    }
 
     onOrder(e) {
-      this.state.order = e.target.value;
+      this.setState({ order: e.target.value });
       this._boundForceUpdate();
-    },
+    }
 
     render() {
       var collection = this.props.collection.toJSON();
@@ -72,17 +72,17 @@ var App = React.createClass({
       );
 
       return (
-        <div style={this.getStyles()}>
+        <div style={this.styles}>
           {employees}
           <DataBar
             collection={collection}
-            onSearch={this.onSearch}
-            onSort={this.onSort}
-            onOrder={this.onOrder} />
+            onSearch={this.onSearch.bind(this)}
+            onSort={this.onSort.bind(this)}
+            onOrder={this.onOrder.bind(this)} />
         </div>
       );
     }
 
-});
+}
 
 export default App;

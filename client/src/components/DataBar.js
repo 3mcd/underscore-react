@@ -17,6 +17,7 @@ class DataBar extends React.Component {
       return {
         position: 'fixed',
         lineHeight: '3em',
+        height: '3em',
         backgroundColor: '#fff',
         display: 'flex',
         bottom: 0,

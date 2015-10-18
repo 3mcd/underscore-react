@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "first": "Martha",
-    "last": "Stewart",
+    "first": "Carly",
+    "last": "Fiorina",
     "salary": 50000,
     "title": "Developer"
   },
   {
     "id": 2,
-    "first": "John",
-    "last": "Doe",
+    "first": "Chris",
+    "last": "Christie",
     "salary": 85000,
     "title": "Senior Developer"
   },
   {
     "id": 3,
-    "first": "Jane",
-    "last": "Doe",
+    "first": "Ben",
+    "last": "Carson",
     "salary": 287000,
     "title": "CFO"
   },
@@ -40,5 +40,19 @@
     "last": "Clinton",
     "salary": 12345,
     "title": "Junior Developer"
+  },
+  {
+    "id": 7,
+    "first": "Jeb",
+    "last": "Bush",
+    "salary": 62000,
+    "title": "Regional Sales Manager"
+  },
+  {
+    "id": 8,
+    "first": "Bernie",
+    "last": "Sanders",
+    "salary": 30000,
+    "title": "Developer"
   }
 ]
