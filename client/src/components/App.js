@@ -1,5 +1,4 @@
 import React from 'react';
-import BackboneMixin from '../mixins/BackboneMixin';
 import Employee from './Employee';
 import DataBar from './DataBar';
 import _ from 'underscore';
@@ -20,16 +19,16 @@ class App extends React.Component {
         display: 'flex',
         flexWrap: 'wrap',
         paddingBottom: '3em'
-      }
+      };
     }
 
     componentDidMount() {
       this._boundForceUpdate = this.forceUpdate.bind(this, null);
-      this.props.collection.on('all', this._boundForceUpdate);
+      this.props.collection.on('add change remove', this._boundForceUpdate);
     }
 
     componentWillUnmount() {
-      this.props.collection.off('all', this._boundForceUpdate);
+      this.props.collection.off('add change remove', this._boundForceUpdate);
     }
 
     onSearch(e) {
@@ -47,35 +46,35 @@ class App extends React.Component {
       this._boundForceUpdate();
     }
 
-    render() {
-      var collection = this.props.collection.toJSON();
+    componentWillUpdate(props, state) {
+      var collection = props.collection;
 
-      if (this.state.search) {
-        collection = _.filter(
-          collection,
+      if (state.search) {
+        collection.filter(
           (employee) => _.some(
-            _.map(_.values(employee), (value) => value.toString()),
-            (value) => value.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
+            _.map(employee.values(), (value) => value.toString()),
+            (value) => value.toLowerCase().indexOf(state.search.toLowerCase()) > -1
           )
         );
       }
 
-      collection = _.sortBy(collection, (employee) => employee[this.state.sort]);
+      collection.set(collection.sortBy((model) => model.get(state.sort)));
 
-      if (this.state.order == 'desc') {
-        collection = collection.reverse();
+      if (state.order == 'desc') {
+        collection.set(collection.models.reverse());
       }
+    }
 
-      var employees = _.map(
-        collection,
-        (employee) => <Employee employee={employee} key={employee.id} />
+    render() {
+      var employees = this.props.collection.map(
+        (employee) => <Employee employee={employee.toJSON()} model={employee} key={employee.id} />
       );
 
       return (
         <div style={this.styles}>
           {employees}
           <DataBar
-            collection={collection}
+            collection={this.props.collection}
             onSearch={this.onSearch.bind(this)}
             onSort={this.onSort.bind(this)}
             onOrder={this.onOrder.bind(this)} />

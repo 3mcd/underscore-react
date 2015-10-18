@@ -5,7 +5,7 @@ class Search extends React.Component {
 
   static get defaultProps() {
     return {
-      onSearch: function () {}
+      onSearch: function () {} // no-op
     };
   }
 

@@ -13,7 +13,7 @@ class DataBar extends React.Component {
       };
     }
 
-    getStyle() {
+    get style() {
       return {
         position: 'fixed',
         lineHeight: '3em',
@@ -28,20 +28,21 @@ class DataBar extends React.Component {
     }
 
     render() {
-      var total = _.reduce(this.props.collection, (a, x) => a + x.salary, 0);
-      var average = total / (this.props.collection.length || 1);
+      var data = this.props.collection.toJSON();
+      var total = _.reduce(data, (a, x) => a + x.salary, 0);
+      var average = total / (data.length || 1);
 
       var sortOptions = _.map(
-        _.keys(this.props.collection[0]),
+        _.keys(data[0]),
         (key) => (
           <option value={key} key={key}>{toTitleCase(key)}</option>
         )
       );
 
       return (
-        <div style={this.getStyle()}>
+        <div style={this.style}>
           <div style={{flex: '1', display: 'flex', flexDirection: 'column', lineHeight: 'normal'}}>
-            <span style={{flex: '1'}}>Expected Annual Wages: <strong>${total.toLocaleString()}</strong></span>
+            <span style={{flex: '1'}}>Total Annual Wages: <strong>${total.toLocaleString()}</strong></span>
             <span style={{flex: '1'}}>Average Annual Wages: <strong>${average.toLocaleString()}</strong></span>
           </div>
           <div style={{flex: '1', textAlign: 'center'}}>
@@ -54,7 +55,9 @@ class DataBar extends React.Component {
               <option value="desc">Desc</option>
             </select>
           </div>
-          <div style={{flex: '1', textAlign: 'right'}}><Search onSearch={this.props.onSearch} /></div>
+          <div style={{flex: '1', textAlign: 'right'}}>
+            <Search onSearch={this.props.onSearch} />
+          </div>
         </div>
       );
     }

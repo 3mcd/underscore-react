@@ -4,7 +4,7 @@ import _ from 'underscore';
 
 class Employee extends React.Component {
 
-  getStyle() {
+  get style() {
     return {
       flex: '1 1 200px',
       height: '200px',
@@ -15,7 +15,7 @@ class Employee extends React.Component {
   }
 
   render() {
-    var data = (
+    var dict = (
       <dl>
       {/* Map each key name/property to a dt and dd */}
       {_.map(
@@ -33,10 +33,10 @@ class Employee extends React.Component {
     );
 
     return (
-      <div style={this.getStyle()}>
+      <div style={this.style}>
         <h2 style={{ margin: 0 }}>{this.props.employee.first}</h2>
         <em>{this.props.employee.last}</em>
-        {data}
+        {dict}
       </div>
     );
   }
