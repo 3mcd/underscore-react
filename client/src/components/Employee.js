@@ -15,20 +15,16 @@ class Employee extends React.Component {
   }
 
   render() {
+    var keys = _.keys(_.omit(this.props.employee, ['first', 'last']));
     var dict = (
       <dl>
       {/* Map each key name/property to a dt and dd */}
-      {_.map(
-        /* Get an array of property names on the objects in our collection */
-        _.keys(
-          /* Omit the first, last names used in the title of the card */
-          _.omit(this.props.employee, ['first', 'last'])
-        ),
-        (name) => [
+      {
+        _.map(keys, (name) => [
           <dt>{toTitleCase(name)}</dt>,
           <dd>{this.props.employee[name].toLocaleString()}</dd>
-        ]
-      )}
+        ])
+      }
       </dl>
     );
 

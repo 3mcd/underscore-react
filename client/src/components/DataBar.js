@@ -8,7 +8,8 @@ class DataBar extends React.Component {
 
     static get defaultProps() {
       return {
-        onSort: function() {}, //no-op
+        onSearch: function () {},
+        onSort: function() {},
         onOrder: function() {}
       };
     }
@@ -23,27 +24,30 @@ class DataBar extends React.Component {
         bottom: 0,
         left: 0,
         right: 0,
-        padding: '0 0.75em'
+        padding: '4px 0.75em',
+        boxShadow: '0 -3px 2px 0 rgba(0,0,0,0.15)'
       };
     }
 
     render() {
-      var data = this.props.collection.toJSON();
-      var total = _.reduce(data, (a, x) => a + x.salary, 0);
-      var average = total / (data.length || 1);
+      var sortOptions;
+      var total = this.props.collection.reduce((a, x) => a + x.get('salary'), 0);
+      var average = total / (this.props.collection.length || 1);
 
-      var sortOptions = _.map(
-        _.keys(data[0]),
-        (key) => (
-          <option value={key} key={key}>{toTitleCase(key)}</option>
-        )
-      );
+      if (this.props.collection.length > 0) {
+        sortOptions = _.map(
+          this.props.collection.first().keys(),
+          (key) => (
+            <option value={key} key={key}>{toTitleCase(key)}</option>
+          )
+        );
+      }
 
       return (
         <div style={this.style}>
           <div style={{flex: '1', display: 'flex', flexDirection: 'column', lineHeight: 'normal'}}>
             <span style={{flex: '1'}}>Total Annual Wages: <strong>${total.toLocaleString()}</strong></span>
-            <span style={{flex: '1'}}>Average Annual Wages: <strong>${average.toLocaleString()}</strong></span>
+            <span style={{flex: '1'}}>Average Annual Wage: <strong>${average.toLocaleString()}</strong></span>
           </div>
           <div style={{flex: '1', textAlign: 'center'}}>
             <span>Sort </span>
