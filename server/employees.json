@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "first": "Eric",
+    "last": "McDaniel",
+    "salary": 80000,
+    "title": "Developer"
+  },
+  {
+    "id": 2,
+    "first": "John",
+    "last": "Doe",
+    "salary": 85000,
+    "title": "Senior Developer"
+  },
+  {
+    "id": 3,
+    "first": "Jane",
+    "last": "Doe",
+    "salary": 187000,
+    "title": "CFO"
+  },
+  {
+    "id": 4,
+    "first": "Donald",
+    "last": "Trump",
+    "salary": 128000,
+    "title": "Office Administrator"
+  },
+  {
+    "id": 5,
+    "first": "Hillary",
+    "last": "Clinton",
+    "salary": 112900,
+    "title": "Office Administrator"
+  },
+  {
+    "id": 6,
+    "first": "Bill",
+    "last": "Clinton",
+    "salary": 12345,
+    "gender": "Junior Developer"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "name": "react-underscore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/dev.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-react-transform": "^1.1.1",
+    "backbone": "^1.2.3",
+    "eslint": "^1.7.1",
+    "eslint-plugin-react": "^3.5.1",
+    "jquery": "^2.1.4",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.1.1",
+    "underscore": "^1.8.3",
+    "webpack": "^1.12.2",
+    "express": "^4.13.3",
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.4.1"
+  }
+}
