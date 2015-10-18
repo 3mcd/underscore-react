@@ -1,18 +1,8 @@
 import React from 'react';
-import Search from './Search';
-import BackboneMixin from '../mixins/BackboneMixin';
 import _ from 'underscore';
 import toTitleCase from '../helpers';
 
 class DataBar extends React.Component {
-
-    static get defaultProps() {
-      return {
-        onSearch: function () {},
-        onSort: function() {},
-        onOrder: function() {}
-      };
-    }
 
     get style() {
       return {
@@ -25,7 +15,7 @@ class DataBar extends React.Component {
         left: 0,
         right: 0,
         padding: '4px 0.75em',
-        boxShadow: '0 -3px 2px 0 rgba(0,0,0,0.15)'
+        boxShadow: '0 -2px 2px 0 rgba(0,0,0,0.2)'
       };
     }
 
@@ -60,7 +50,7 @@ class DataBar extends React.Component {
             </select>
           </div>
           <div style={{flex: '1', textAlign: 'right'}}>
-            <Search onSearch={this.props.onSearch} />
+            <label>Search <input type="text" onKeyUp={this.props.onSearch} /></label>
           </div>
         </div>
       );

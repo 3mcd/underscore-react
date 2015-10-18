@@ -2,16 +2,20 @@ import React from 'react';
 import Employee from './Employee';
 import DataBar from './DataBar';
 import _ from 'underscore';
+import EmployeeCollection from '../api/EmployeeCollection';
 
 class App extends React.Component {
 
     constructor(props) {
       super(props);
+
       this.state = {
         search: '',
         sort: 'id',
         order: 'asc'
       };
+
+      _.bindAll(this, 'onSearch', 'onSort', 'onOrder');
     }
 
     get styles() {
@@ -46,28 +50,24 @@ class App extends React.Component {
       this._boundForceUpdate();
     }
 
-    componentWillUpdate(props, state) {
-      var collection = props.collection;
-
-      if (state.search) {
-        collection.filter(
-          (employee) => _.some(
-            _.map(employee.values(), (value) => value.toString()),
-            (value) => value.toLowerCase().indexOf(state.search.toLowerCase()) > -1
-          )
-        );
-      }
-
-      collection.set(collection.sortBy((model) => model.get(state.sort)));
-
-      if (state.order == 'desc') {
-        collection.set(collection.models.reverse());
-      }
-    }
-
     render() {
-      var employees = this.props.collection.map(
-        (employee) => <Employee employee={employee.toJSON()} model={employee} key={employee.id} />
+      var models = this.props.collection.filter(
+        (model) => _.some(
+          model.values(),
+          (value) => {
+            return value.toString().toLowerCase().indexOf(this.state.search.toLowerCase()) > -1;
+          }
+        )
+      );
+
+      models = _.sortBy(models, (model) => model.get(this.state.sort));
+
+      if (this.state.order == 'desc') {
+        models = models.reverse();
+      }
+
+      var employees = models.map(
+        (model) => <Employee model={model} key={model.get('id')} />
       );
 
       return (
@@ -75,9 +75,9 @@ class App extends React.Component {
           {employees}
           <DataBar
             collection={this.props.collection}
-            onSearch={this.onSearch.bind(this)}
-            onSort={this.onSort.bind(this)}
-            onOrder={this.onOrder.bind(this)} />
+            onSearch={this.onSearch}
+            onSort={this.onSort}
+            onOrder={this.onOrder} />
         </div>
       );
     }

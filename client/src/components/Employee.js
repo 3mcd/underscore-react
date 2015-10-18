@@ -15,24 +15,18 @@ class Employee extends React.Component {
   }
 
   render() {
-    var keys = _.keys(_.omit(this.props.employee, ['first', 'last']));
-    var dict = (
-      <dl>
-      {/* Map each key name/property to a dt and dd */}
-      {
-        _.map(keys, (name) => [
-          <dt>{toTitleCase(name)}</dt>,
-          <dd>{this.props.employee[name].toLocaleString()}</dd>
-        ])
-      }
-      </dl>
-    );
+    var employee = this.props.model.toJSON();
+    var keys = _.keys(_.omit(employee, ['first', 'last']));
 
     return (
       <div style={this.style}>
-        <h2 style={{ margin: 0 }}>{this.props.employee.first}</h2>
-        <em>{this.props.employee.last}</em>
-        {dict}
+        <h2 style={{ margin: 0 }}>{employee.first}</h2>
+        <em>{employee.last}</em>
+        <ul>
+          <li>Id: {employee.id}</li>
+          <li>Title: {employee.title}</li>
+          <li>Salary: {employee.salary.toLocaleString()}</li>
+        </ul>
       </div>
     );
   }
