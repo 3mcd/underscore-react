@@ -54,5 +54,19 @@
     "last": "Sanders",
     "salary": 30000,
     "title": "Developer"
+  },
+  {
+    "id": 9,
+    "first": "Rand",
+    "last": "Paul",
+    "salary": 99999,
+    "title": "Disk Jockey"
+  },
+  {
+    "id": 10,
+    "first": "Martin",
+    "last": "O'Malley",
+    "salary": 35000,
+    "title": "Senior Developer"
   }
 ]

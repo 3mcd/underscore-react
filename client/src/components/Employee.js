@@ -6,10 +6,10 @@ class Employee extends React.Component {
 
   get style() {
     return {
-      flex: '1 1 200px',
-      height: '200px',
+      flex: '0 1 220px',
+      height: '220px',
       margin: '0.35em',
-      padding: '0.85em',
+      padding: '0.55em',
       backgroundColor: '#fff'
     };
   }
@@ -22,11 +22,14 @@ class Employee extends React.Component {
       <div style={this.style}>
         <h2 style={{ margin: 0 }}>{employee.first}</h2>
         <em>{employee.last}</em>
-        <ul>
-          <li>Id: {employee.id}</li>
-          <li>Title: {employee.title}</li>
-          <li>Salary: {employee.salary.toLocaleString()}</li>
-        </ul>
+        <dl>
+          <dt>Id</dt>
+          <dd>{employee.id}</dd>
+          <dt>Title</dt>
+          <dd>{employee.title}</dd>
+          <dt>Salary</dt>
+          <dd>{employee.salary.toLocaleString()}</dd>
+        </dl>
       </div>
     );
   }

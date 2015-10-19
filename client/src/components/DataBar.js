@@ -6,27 +6,23 @@ class DataBar extends React.Component {
 
     get style() {
       return {
-        position: 'fixed',
-        lineHeight: '3em',
-        height: '3em',
+        flex: '0 1 250px',
+        flexDirection: 'column',
         backgroundColor: '#fff',
-        display: 'flex',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        padding: '4px 0.75em',
-        boxShadow: '0 -2px 2px 0 rgba(0,0,0,0.2)'
+        boxShadow: '2px 2px 2px 0 rgba(0,0,0,0.2)',
+        padding: '0 1em'
       };
     }
 
     render() {
       var sortOptions;
-      var total = this.props.collection.reduce((a, x) => a + x.get('salary'), 0);
-      var average = total / (this.props.collection.length || 1);
+      var models = this.props.models;
+      var total = models.reduce((a, x) => a + x.get('salary'), 0);
+      var average = total / (models.length || 1);
 
-      if (this.props.collection.length > 0) {
+      if (models.length > 0) {
         sortOptions = _.map(
-          this.props.collection.first().keys(),
+          models[0].keys(),
           (key) => (
             <option value={key} key={key}>{toTitleCase(key)}</option>
           )
@@ -35,23 +31,23 @@ class DataBar extends React.Component {
 
       return (
         <div style={this.style}>
-          <div style={{flex: '1', display: 'flex', flexDirection: 'column', lineHeight: 'normal'}}>
-            <span style={{flex: '1'}}>Total Annual Wages: <strong>${total.toLocaleString()}</strong></span>
-            <span style={{flex: '1'}}>Average Annual Wage: <strong>${average.toLocaleString()}</strong></span>
-          </div>
-          <div style={{flex: '1', textAlign: 'center'}}>
-            <span>Sort </span>
+          <h4>Data</h4>
+          <div>Total Annual Wages: <strong>${total.toLocaleString()}</strong></div>
+          <div>Average Annual Wage: <strong>${average.toLocaleString()}</strong></div>
+          <h4>Sort</h4>
+          <div style={{display: 'inline-block'}}>
             <select onChange={this.props.onSort}>
               {sortOptions}
             </select>
+          </div>
+          <div style={{display: 'inline-block'}}>
             <select onChange={this.props.onOrder}>
               <option value="asc">Asc</option>
               <option value="desc">Desc</option>
             </select>
           </div>
-          <div style={{flex: '1', textAlign: 'right'}}>
-            <label>Search <input type="text" onKeyUp={this.props.onSearch} /></label>
-          </div>
+          <h4>Search</h4>
+          <input type="text" onKeyUp={this.props.onSearch} />
         </div>
       );
     }

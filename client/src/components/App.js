@@ -1,8 +1,7 @@
 import React from 'react';
-import Employee from './Employee';
+import EmployeeList from './EmployeeList';
 import DataBar from './DataBar';
 import _ from 'underscore';
-import EmployeeCollection from '../api/EmployeeCollection';
 
 class App extends React.Component {
 
@@ -20,34 +19,35 @@ class App extends React.Component {
 
     get styles() {
       return {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
         display: 'flex',
-        flexWrap: 'wrap',
-        paddingBottom: '3em'
+        flexDirection: 'row'
       };
     }
 
     componentDidMount() {
-      this._boundForceUpdate = this.forceUpdate.bind(this, null);
-      this.props.collection.on('add change remove', this._boundForceUpdate);
+      this._forceUpdate = this.forceUpdate.bind(this, null);
+      this.props.collection.on('add change remove', this._forceUpdate);
     }
 
     componentWillUnmount() {
-      this.props.collection.off('add change remove', this._boundForceUpdate);
+      this.props.collection.off('add change remove', this._forceUpdate);
     }
 
     onSearch(e) {
       this.setState({ search: e.target.value });
-      this._boundForceUpdate();
     }
 
     onSort(e) {
       this.setState({ sort: e.target.value });
-      this._boundForceUpdate();
     }
 
     onOrder(e) {
       this.setState({ order: e.target.value });
-      this._boundForceUpdate();
     }
 
     render() {
@@ -66,18 +66,14 @@ class App extends React.Component {
         models = models.reverse();
       }
 
-      var employees = models.map(
-        (model) => <Employee model={model} key={model.get('id')} />
-      );
-
       return (
         <div style={this.styles}>
-          {employees}
           <DataBar
-            collection={this.props.collection}
+            models={models}
             onSearch={this.onSearch}
             onSort={this.onSort}
             onOrder={this.onOrder} />
+          <EmployeeList models={models} />
         </div>
       );
     }
