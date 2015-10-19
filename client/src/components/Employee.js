@@ -10,7 +10,7 @@ class Employee extends React.Component {
     return (
       <div style={this.style}>
         <h2 style={{ margin: 0 }}>{employee.first}</h2>
-        <em>{employee.last}</em>
+        <span>{employee.last}</span>
         <dl>
           <dt>Id</dt>
           <dd>{employee.id}</dd>
