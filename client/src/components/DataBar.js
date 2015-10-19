@@ -22,8 +22,18 @@ class DataBar extends React.Component {
       return (
         <div style={this.style}>
           <h4>Data</h4>
-          <div>Total Annual Wages: <strong>${total.toLocaleString()}</strong></div>
-          <div>Average Annual Wage: <strong>${average.toLocaleString()}</strong></div>
+          <div style={this.dataStyle}>
+            <div>Number of Employees</div>
+            <strong>{models.length}</strong>
+          </div>
+          <div style={this.dataStyle}>
+            <div>Total Annual Wages</div>
+            <strong>${total.toLocaleString()}</strong>
+          </div>
+          <div style={this.dataStyle}>
+            <div>Avg. Annual Salary</div>
+            <strong>${average.toLocaleString()}</strong>
+          </div>
           <h4>Sort</h4>
           <div style={{display: 'inline-block'}}>
             <select onChange={this.props.onSort}>
@@ -47,11 +57,17 @@ class DataBar extends React.Component {
         flex: '0 1 250px',
         flexDirection: 'column',
         backgroundColor: '#fff',
-        boxShadow: '2px 2px 2px 0 rgba(0,0,0,0.2)',
-        padding: '0 1em'
+        padding: '0 1em',
+        fontSize: '1.1em'
       };
     }
-    
+
+    get dataStyle() {
+      return {
+        marginTop: '1em'
+      };
+    }
+
 }
 
 export default DataBar;

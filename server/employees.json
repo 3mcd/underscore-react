@@ -18,7 +18,7 @@
     "first": "Ben",
     "last": "Carson",
     "salary": 287000,
-    "title": "CFO"
+    "title": "Chief Financial Officer"
   },
   {
     "id": 4,
@@ -36,8 +36,8 @@
   },
   {
     "id": 6,
-    "first": "Bill",
-    "last": "Clinton",
+    "first": "Marco",
+    "last": "Rubio",
     "salary": 12345,
     "title": "Junior Developer"
   },
@@ -45,8 +45,8 @@
     "id": 7,
     "first": "Jeb",
     "last": "Bush",
-    "salary": 62000,
-    "title": "Regional Sales Manager"
+    "salary": 362000,
+    "title": "Sales Manager"
   },
   {
     "id": 8,
@@ -59,8 +59,8 @@
     "id": 9,
     "first": "Rand",
     "last": "Paul",
-    "salary": 99999,
-    "title": "Disk Jockey"
+    "salary": 200000,
+    "title": "Sales Engineer"
   },
   {
     "id": 10,
@@ -68,5 +68,33 @@
     "last": "O'Malley",
     "salary": 35000,
     "title": "Senior Developer"
+  },
+  {
+    "id": 11,
+    "first": "Mike",
+    "last": "Huckabee",
+    "salary": 40000,
+    "title": "Chief Technical Officer"
+  },
+  {
+    "id": 12,
+    "first": "Ted",
+    "last": "Cruz",
+    "salary": 246000,
+    "title": "Sales Engineer"
+  },
+  {
+    "id": 13,
+    "first": "Rick",
+    "last": "Santorum",
+    "salary": 40000,
+    "title": "Developer"
+  },
+  {
+    "id": 14,
+    "first": "Jim",
+    "last": "Webb",
+    "salary": 190000,
+    "title": "Sales Engineer"
   }
 ]

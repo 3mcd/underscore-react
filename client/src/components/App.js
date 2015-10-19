@@ -40,9 +40,7 @@ class App extends React.Component {
 
     render() {
       var models = this.props.collection.filter(
-        (model) => _.some(
-          model.values(),
-          (value) => {
+        (model) => _.some(model.values(), (value) => {
             return value.toString().toLowerCase().indexOf(this.state.search) > -1;
           }
         )

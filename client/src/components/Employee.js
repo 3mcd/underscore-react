@@ -6,7 +6,6 @@ class Employee extends React.Component {
 
   render() {
     var employee = this.props.model.toJSON();
-    var keys = _.keys(_.omit(employee, ['first', 'last']));
 
     return (
       <div style={this.style}>
@@ -26,11 +25,11 @@ class Employee extends React.Component {
 
   get style() {
     return {
-      flex: '0 1 220px',
-      height: '220px',
+      flex: '0 1 240px',
       margin: '0.35em',
       padding: '0.55em',
-      backgroundColor: '#fff'
+      backgroundColor: '#FFFCED',
+      borderRadius: '3px'
     };
   }
 

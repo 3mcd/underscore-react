@@ -19,12 +19,14 @@ class EmployeeList extends React.Component {
       display: 'flex',
       justifyContent: 'center',
       alignContent: 'flex-start',
+      alignItems: 'flex-start',
       flexWrap: 'wrap',
       overflowY: 'scroll',
-      overflowX: 'hidden'
+      overflowX: 'hidden',
+      padding: '0.35em 0'
     };
   }
-  
+
 }
 
 export default EmployeeList;
