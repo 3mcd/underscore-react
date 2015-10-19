@@ -17,18 +17,6 @@ class App extends React.Component {
       _.bindAll(this, 'onSearch', 'onSort', 'onOrder');
     }
 
-    get styles() {
-      return {
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        display: 'flex',
-        flexDirection: 'row'
-      };
-    }
-
     componentDidMount() {
       this._forceUpdate = this.forceUpdate.bind(this, null);
       this.props.collection.on('add change remove', this._forceUpdate);
@@ -39,7 +27,7 @@ class App extends React.Component {
     }
 
     onSearch(e) {
-      this.setState({ search: e.target.value });
+      this.setState({ search: e.target.value.trim().toLowerCase() });
     }
 
     onSort(e) {
@@ -55,7 +43,7 @@ class App extends React.Component {
         (model) => _.some(
           model.values(),
           (value) => {
-            return value.toString().toLowerCase().indexOf(this.state.search.toLowerCase()) > -1;
+            return value.toString().toLowerCase().indexOf(this.state.search) > -1;
           }
         )
       );
@@ -78,6 +66,17 @@ class App extends React.Component {
       );
     }
 
+    get styles() {
+      return {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        display: 'flex',
+        flexDirection: 'row'
+      };
+    }
 }
 
 export default App;

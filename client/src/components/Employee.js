@@ -4,16 +4,6 @@ import _ from 'underscore';
 
 class Employee extends React.Component {
 
-  get style() {
-    return {
-      flex: '0 1 220px',
-      height: '220px',
-      margin: '0.35em',
-      padding: '0.55em',
-      backgroundColor: '#fff'
-    };
-  }
-
   render() {
     var employee = this.props.model.toJSON();
     var keys = _.keys(_.omit(employee, ['first', 'last']));
@@ -32,6 +22,16 @@ class Employee extends React.Component {
         </dl>
       </div>
     );
+  }
+
+  get style() {
+    return {
+      flex: '0 1 220px',
+      height: '220px',
+      margin: '0.35em',
+      padding: '0.55em',
+      backgroundColor: '#fff'
+    };
   }
 
 }

@@ -4,16 +4,6 @@ import toTitleCase from '../helpers';
 
 class DataBar extends React.Component {
 
-    get style() {
-      return {
-        flex: '0 1 250px',
-        flexDirection: 'column',
-        backgroundColor: '#fff',
-        boxShadow: '2px 2px 2px 0 rgba(0,0,0,0.2)',
-        padding: '0 1em'
-      };
-    }
-
     render() {
       var sortOptions;
       var models = this.props.models;
@@ -52,6 +42,16 @@ class DataBar extends React.Component {
       );
     }
 
+    get style() {
+      return {
+        flex: '0 1 250px',
+        flexDirection: 'column',
+        backgroundColor: '#fff',
+        boxShadow: '2px 2px 2px 0 rgba(0,0,0,0.2)',
+        padding: '0 1em'
+      };
+    }
+    
 }
 
 export default DataBar;

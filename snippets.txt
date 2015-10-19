@@ -1,0 +1,22 @@
+```javascript
+// App#render
+// ...
+
+// Get an array of models where each model contains the search string in one of it's properties
+var models = this.props.collection.filter(
+  (model) => _.some(
+    model.values(),
+    (value) => {
+      return value.toString().toLowerCase().indexOf(this.state.search) > -1;
+    }
+  )
+);
+
+// Sort the models by the sort criteria
+models = _.sortBy(models, (model) => model.get(this.state.sort));
+
+// Reverse the array if the search order is descending
+if (this.state.order == 'desc') {
+  models = models.reverse();
+}
+```
