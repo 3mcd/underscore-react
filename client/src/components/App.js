@@ -39,18 +39,7 @@ class App extends React.Component {
     }
 
     render() {
-      var models = this.props.collection.filter(
-        (model) => _.some(model.values(), (value) => {
-            return value.toString().toLowerCase().indexOf(this.state.search) > -1;
-          }
-        )
-      );
-
-      models = _.sortBy(models, (model) => model.get(this.state.sort));
-
-      if (this.state.order == 'desc') {
-        models = models.reverse();
-      }
+      var models = this.props.collection.models;
 
       return (
         <div style={this.styles}>

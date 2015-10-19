@@ -4,12 +4,8 @@ import Employee from './Employee';
 class EmployeeList extends React.Component {
 
   render() {
-    var employees = this.props.models.map(
-      (model) => <Employee model={model} key={model.get('id')} />
-    );
-
     return (
-      <div style={this.style}>{employees}</div>
+      <div style={this.style}></div>
     );
   }
 
