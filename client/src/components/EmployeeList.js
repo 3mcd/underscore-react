@@ -1,5 +1,6 @@
 import React from 'react';
 import Employee from './Employee';
+import _ from 'underscore';
 
 class EmployeeList extends React.Component {
 

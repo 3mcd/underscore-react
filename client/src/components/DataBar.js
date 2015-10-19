@@ -5,7 +5,6 @@ import toTitleCase from '../helpers';
 class DataBar extends React.Component {
 
     render() {
-
       return (
         <div style={this.style}>
           <h4>Data</h4>

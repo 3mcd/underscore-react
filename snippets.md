@@ -40,7 +40,8 @@ if (models.length > 0) {
  * EmployeeList#render
  */
 
-var employees = this.props.models.map(
+var employees = _.map(
+  this.props.models,
   (model) => <Employee model={model} key={model.get('id')} />
 );
 ```
